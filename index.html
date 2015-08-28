@@ -3,197 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <title>REACTJS-DEMO-YINING</title>
+    <link href="reset.css" rel="stylesheet" type="text/css">
 <link href="main.css" rel="stylesheet" type="text/css">
-<script src="build/react.js"></script>
-    <script src="build/JSXTransformer.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+
+<script src="build/react.js"></script>
+<script src="build/JSXTransformer.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
 
   </head>
   <body>
     <div id="container"></div>
-    <div id="pages" style="font-size:12px;"></div> 
-   
-    <script type="text/jsx">
-
-
-
-
-var ServiceChooser = React.createClass({
-   getInitialState: function(){
-        return { total: 0,searchString:"",items:[],num:0}; 
-        
-        
-    },
-
-componentDidMount: function(){
-        
-     
-        var self = this;
-    
-
-        var url = 'http://www.json-generator.com/api/json/get/ceKyQrBUqG?indent=2';
-
-
-    
- $.getJSON(url, function(data) {           
-      
-
-
-   self.setState({ items: data}); 
-
-
-
-        
-
-
-
-       
-     });
-   },
-
-
-          
-
-
-
-
-   
-   addTotal: function( price,n ){
-
-        
-  
-     this.setState({ total:this.state.total+price  });
-     this.setState({ num:this.state.num+n  });
-
-
-    },
-      handleChange: function(e){
-
-
-        this.setState({searchString:e.target.value.toLowerCase()});
-
-    },
-
-    render: function() {
-       items=this.state.items;
-        var self = this;
-      total=this.state.total;
-      active=this.state.active;
-      num=this.state.num;
-
-  
-        var items1 = this.state.items.map(function(s){
-
-         
-
-            return <Service name={s.name} price={s.price} active={s.active} addTotal={self.addTotal}  />;
-        });
- 
-    searchString = this.state.searchString;
-
-     if(searchString.length > 0){
-
-            
-
-            items1 = this.state.items.filter(function(a){
-                  
-                return a.name.toLowerCase().match(searchString);
-            });
-            items1 = items1.map(function(s){
-
-         
-
-            return <Service name={s.name} price={s.price} active={s.active} addTotal={self.addTotal}  />;
-        });
-
-        }
-   
-        
-        return <div id="content">
-                    <h1>Your Order</h1>
-                     
-                    
-                    <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Type here" />
-                   
-                  
-                    
-                    {items1}
-
-                  
-                   
-                    
-                    <p id="total">You have chosen <b>{this.state.num}</b> items,$ <b>{this.state.total.toFixed(2)}</b> in total</p>
-                </div>;
-
-    }
-});
-
-
-var Service = React.createClass({
-   getInitialState: function(){
-        return { active: false }; 
-        
-        
-    },
-     
-
-   clickHandler: function (){
-
-        var active = !this.state.active;
-
-        this.setState({ active: active });
-        var price= this.props.price;
-       
-
-        if (active==true)
-        {
- 
-
-this.props.addTotal(price,1);
-
-
-
-       
-        }
-    else
-        {      alert("This item will be deleted!");
-     this.props.addTotal(-price,-1);
-     
-   
-         }
-      
-     
-        
-
-    },
-
-    render: function(){
-     
-
-
-
-      return  <div className="items"  onClick={this.clickHandler}><p className={ this.state.active ? 'active' : '' } >
-                   {this.props.name} <b>${this.props.price.toFixed(2)}</b>
-                   
-                </p>
-              
-                 </div>
-
-                ;
-
-    }
-
-});
-
-
-React.render(
-    <ServiceChooser  />,
-    document.getElementById("container")
-);
-
-  </script>
-
+ <script type="text/jsx" src="main.jsx"></script>  
+</body>
   
 </html>
