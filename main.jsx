@@ -16,7 +16,7 @@ componentDidMount: function(){
         var self = this;
     
 
-        var url = 'http://www.json-generator.com/api/json/get/ceKyQrBUqG?indent=2';
+        var url = 'data1.json';
 
 
     
@@ -71,7 +71,7 @@ componentDidMount: function(){
 
          
 
-            return <Service name={s.name} price={s.price} active={s.active} addTotal={self.addTotal}  />;
+            return <Service name={s.name} price={s.price} singer={s.singer} src={s.src} active={s.active} addTotal={self.addTotal}  />;
         });
  
     searchString = this.state.searchString;
@@ -88,26 +88,25 @@ componentDidMount: function(){
 
          
 
-            return <Service name={s.name} price={s.price} active={s.active} addTotal={self.addTotal}  />;
+            return <Service name={s.name} singer={s.singer} src={s.src} price={s.price} active={s.active} addTotal={self.addTotal}  />;
         });
 
         }
    
         
         return <div id="content">
-                    <h1>Your Order</h1>
-                     
                     
-                   <div className="quickSearch"> <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Type here" /><i className="fa fa-search"></i></div>
-                   
-                  
+                    
+  <div className="Navbar">SHOPPING CART                   
+       <span className="quickSearch">     <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Type here" /><i className="fa fa-search"></i>
+                  </span> 
+                  </div>
                     
                     {items1}
 
                   
-                   
-                    
-                    <p id="total">You have chosen <b>{this.state.num}</b> items,$ <b>{this.state.total.toFixed(2)}</b> in total</p>
+              
+                    <p className="Navbar" id="total">You have chosen <b>{this.state.num}</b> items,$ <b>{this.state.total.toFixed(2)}</b> in total</p>
                 </div>;
 
     }
@@ -128,7 +127,7 @@ var Service = React.createClass({
 
         this.setState({ active: active });
         var price= this.props.price;
-       
+      
 
         if (active==true)
         {
@@ -141,7 +140,7 @@ this.props.addTotal(price,1);
        
         }
     else
-        {      alert("This item will be deleted!");
+        {      alert("This item will be removed from your shopping cart!");
      this.props.addTotal(-price,-1);
      
    
@@ -157,10 +156,10 @@ this.props.addTotal(price,1);
 
 
 
-      return <div className="items"  onClick={this.clickHandler}><p className={ this.state.active ? 'active' : '' } >
+      return <div className="items"  onClick={this.clickHandler}><img src={this.props.src} /><p className={ this.state.active ? 'active' : '' } >
                    {this.props.name} <b>${this.props.price.toFixed(2)}</b>
-                   
                 </p>
+                   
               
                  </div> 
                   
@@ -172,7 +171,7 @@ this.props.addTotal(price,1);
 
 
 React.render(
-    <ServiceChooser  />,
+    <ServiceChooser />,
     document.getElementById("container")
 );
 

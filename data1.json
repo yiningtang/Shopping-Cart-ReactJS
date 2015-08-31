@@ -1,0 +1,38 @@
+[
+  { 
+    "price": 524.81820000000005, 
+    "name": "Blank Square",
+    "src":"1.jpg"
+  }, 
+  {
+    "price": 956.25030000000004, 
+    "name": "Red",
+    "src":"2.jpg"
+  }, 
+  {
+    "price": 383.50850000000003, 
+    "name": "Roar",
+    "src":"3.jpg"
+  }, 
+  {
+    "price": 522.83309999999994, 
+    "name": "Last Friday",
+    "src":"4.jpg"
+  }, 
+  {
+    "price": 885.35450000000003, 
+    "name": "Wild Wild Love",
+    "src":"5.jpg "
+  }, 
+  {
+    "price": 179.04859999999999, 
+    "name": "What Makes You Beautiful",
+    "src":"6.jpg"
+  },
+  {
+    "price": 188.04859999999999, 
+    "name": "My December",
+    "src":"7.jpg"
+  } 
+
+]
